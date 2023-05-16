@@ -1,0 +1,7 @@
+{
+  "name": "IntentoFinal",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
