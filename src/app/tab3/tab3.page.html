@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 3
+      Categoria
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -12,6 +12,54 @@
       <ion-title size="large">Tab 3</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-list>
+    <ion-label position="stacked">Crear categoria</ion-label>
+    <ion-item>
+      <ion-label position="stacked" >Nombre</ion-label>
+      <ion-input type="text" [(ngModel)]="this.categoria.nombreC"></ion-input>
+    </ion-item>
+    <ion-button size="small" color="danger" expand="block" (click)="PostCategoria()">Guardar</ion-button>
+  </ion-list>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-label position="stacked">Agregar productos a la categoria</ion-label>
+  <ion-list>
+    <ion-item *ngFor="let item of this.categorias; let x=index">
+      {{x+1}}. <ion-button  expand="block" (click)="obtenerId(this.item.id!)" (click)="setOpen(true)">{{item.nombreC}}</ion-button>
+    </ion-item>
+  </ion-list>
+  <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>
+
+
+<ion-modal [isOpen]="isModalOpen">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Creando producto</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="setOpen(false)">Close</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <ion-list>
+        <ion-item>
+          <ion-label>id:</ion-label>
+          <ion-input type="text" [disabled]="true" value="{{this.id}}" >{{this.id}}</ion-input>
+        </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Detalle:</ion-label>
+        <ion-input type="text" name="detalle" [(ngModel)]="this.nuevo.detalle"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Valor:</ion-label>
+        <ion-input type="number" name="valor" [(ngModel)]="this.nuevo.valor"></ion-input>
+      </ion-item>
+      </ion-list>
+      <ion-button expand="block" (click)="agregarProductos()">añadir producto </ion-button>
+        <ion-button expand="block" color="danger" *ngIf="this.mostrar===true" (click)="ActualizarCategoria()" >Guardar productos</ion-button>
+    </ion-content>
+  </ng-template>
+</ion-modal>

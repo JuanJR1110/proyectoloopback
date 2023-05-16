@@ -6,6 +6,10 @@ const routes: Routes = [
   {
     path: '',
     component: Tab2Page,
+  },
+  {
+    path: 'actualizar/:id',
+    loadChildren: () => import('./actualizar/actualizar.module').then( m => m.ActualizarPageModule)
   }
 ];
 

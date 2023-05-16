@@ -1,17 +1,30 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 2 page"></app-explore-container>
-</ion-content>
+<ion-app>
+  <div class="ion-page" id="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Lista de facturas</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <ion-list *ngFor="let item of this.facturas">
+        <ion-label>id:{{this.item.vendedor}}</ion-label>------<ion-label>Fecha:{{this.item.fecha}}</ion-label>
+        <ion-item color="primary" size="small">
+          <ion-label>Detalle:</ion-label><ion-label>Cantidad</ion-label><ion-label>Valor</ion-label>
+        </ion-item>
+        <ion-item *ngFor="let item2 of this.item.Productosvendidos">
+          <ion-label>{{item2.detalle}}</ion-label><ion-label>{{item2.cant}}</ion-label><ion-label>${{item2.valor*item2.cant}}</ion-label>
+        </ion-item>
+        <ion-item color="primary" size="small">
+          <ion-label>Subtotal</ion-label><ion-label>IVA 19%</ion-label><ion-label>Total</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>${{item.subtotal}}</ion-label><ion-label>${{item.iva}}</ion-label><ion-label>${{item.total}}</ion-label>
+        </ion-item>
+        <ion-button expand="block" size="small" color="success" [routerLink]="['//tabs/facturas/actualizar/',item.id]" routerLinkActive="router-link-active"  >Ver</ion-button>
+      </ion-list>
+    </ion-content>
+  </div>
+</ion-app>

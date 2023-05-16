@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Nuevousuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Nuevo Usuario</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-item>
+    <ion-label>nombre:</ion-label>
+    <ion-input type="text" [(ngModel)]="this.user.username"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>correo:</ion-label>
+    <ion-input type="email" [(ngModel)]="this.user.email"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Clave:</ion-label>
+    <ion-input type="password" [(ngModel)]="this.user.password"></ion-input>
+  </ion-item>
+  <ion-button size="small" (click)="nuevo()">Crear</ion-button>
+</ion-content>

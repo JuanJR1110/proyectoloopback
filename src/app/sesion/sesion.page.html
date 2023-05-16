@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Sesión</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">sesion</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-item>
+    <ion-label>Correo:</ion-label>
+    <ion-input type="email" name="email" [(ngModel)]="this.email" required=""></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Clave:</ion-label>
+    <ion-input type="password" [(ngModel)]="this.password" required=""></ion-input>
+  </ion-item>
+  <ion-button size="small" (click)="ingresar()">Ingresar</ion-button><ion-button size="small" color="danger" [routerLink]="['/sesion/nuevousuario']" routerLinkActive="router-link-active"  >Crear una cuenta</ion-button>
+
+</ion-content>

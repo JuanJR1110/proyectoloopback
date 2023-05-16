@@ -1,7 +1,5 @@
 {
-  "name": "IntentoFinal",
-  "integrations": {
-    "capacitor": {}
-  },
+  "name": "proyecto",
+  "integrations": {},
   "type": "angular"
 }
